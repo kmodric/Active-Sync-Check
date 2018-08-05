@@ -6,11 +6,11 @@ Nagios plugin for checking Active Sync
  
  Command line: check_activesync.sh 
  
-# Description: 
+## Description: 
  This plugin will attempt to connect to EAS (Exchange Active Sync) server and get Folder information for specific user 
  Scripts is checking existing of some unique Folder in the output 
  
-# Notes: 
+## Notes: 
  - This plugin requires that the curl program is installed. 
  - You need to copy binary file activesync.txt to: /usr/lib/nagios/plugins/ 
  or change in script to reflect your configuration (--data-binary @/usr/lib/nagios/plugins/activesync.txt) 
@@ -23,22 +23,34 @@ Nagios plugin for checking Active Sync
 	12.1 (Exchange 2007 SP1) 
 	12.0 (Exchange 2007 RTM) 
    
-# Parameters: 
- $1 - domain name 
- $2 - username 
- $3 - password (Note: avoid using of special character e.g.: escalation mark!) 
- $4 - DeviceID - A unique id for the device that is synchronizing (you gen retrieve that information from owa (Outlook web access)) 
-	or using power shell: 
-	Get-ActiveSyncDevice -Identity "user" 
-	Get-ActiveSyncDevice -Mailbox "domainuser" 
- $5 - DeviceType - An id for the device/model you are using, or the ActiveSync client. (can be anything eg. PocketPC or iPhone) 
- $6 - activesyncserver (eg. as.contoso.com) 
- $7 - UniqueFolder (eg. Nagios2759671) 
+## Parameters: 
+ $1 - domain name
  
-# Example of command definitions for nagios: 
+ $2 - username 
+ 
+ $3 - password (Note: avoid using of special character e.g.: escalation mark!) 
+ 
+ $4 - DeviceID - A unique id for the device that is synchronizing (you gen retrieve that information from owa (Outlook web access)) 
+
+or using power shell: 
+
+Get-ActiveSyncDevice -Identity "user" 
+
+Get-ActiveSyncDevice -Mailbox "domainuser" 
+
+$5 - DeviceType - An id for the device/model you are using, or the ActiveSync client. (can be anything eg. PocketPC or iPhone) 
+
+$6 - activesyncserver (eg. as.contoso.com) 
+
+$7 - UniqueFolder (eg. Nagios2759671) 
+ 
+## Example of command definitions for nagios: 
  
 define command { 
+
  command_name check_activesync 
+
  command_line /usr/lib/nagios/plugins/check_activesync.sh $ARG1$ $ARG2$ $ARG3$ $ARG4$ $ARG5$ $ARG6$ $ARG7$ 
-	} 
+
+} 
  
