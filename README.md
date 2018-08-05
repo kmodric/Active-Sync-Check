@@ -1,6 +1,11 @@
 # Active-Sync-Check
 Nagios plugin for checking Active Sync
 
+
+![ActiveSync is 0 or 1](images/ActiveSyncCheck.jpg)
+
+
+
  Base for this plugin was great article about EAS protocol written by Andreas Helland (Digging Into The Exchange ActiveSync Protocol) 
 	http://mobilitydojo.net/2010/03/17/digging-into-the-exchange-activesync-protocol/ 
  
@@ -54,3 +59,5 @@ define command {
 
 } 
  
+ 
+ If you want a availability graph then you need to turn on performance data for this check.
